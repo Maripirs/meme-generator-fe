@@ -1,8 +1,8 @@
 import "./App.css";
 import { Routes, Route, NavLink } from "react-router-dom";
 
-import Library from "./Componens/Library";
-import Creator from "./Componens/Creator";
+import Library from "./Pages/Library";
+import Creator from "./Pages/Creator";
 
 function App() {
 	return (
