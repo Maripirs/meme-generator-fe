@@ -5,10 +5,6 @@
 }
 
 header {
-<<<<<<< HEAD
-	height: 60px;
-	background-color: black;
-=======
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -17,13 +13,10 @@ header {
 	height: 120px;
 	background-color: #0e0d17;
 	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.911);
->>>>>>> create
 	color: white;
 }
 main {
 	flex-grow: 1;
-<<<<<<< HEAD
-=======
 	background-color: #1d1d2a;
 }
 nav {
@@ -43,5 +36,4 @@ nav {
 }
 .active {
 	background-color: #8c2eff;
->>>>>>> create
 }
