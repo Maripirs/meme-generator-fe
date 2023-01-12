@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./Library.css";
 
 const Library = () => {
@@ -15,27 +15,20 @@ const Library = () => {
 
     fetch("https://programming-memes-reddit.p.rapidapi.com/", options)
       .then((response) => response.json())
-      .then((response) => {
-        console.log("response JSON", response);
-        setMeme(response);
-      })
+      .then((response) => console.log(response))
       .catch((err) => console.error(err));
   };
 
   useEffect(() => {
     getMeme();
-  }, []);
+  });
 
-  return (
-    <div className="library-container">
-      {meme.map((meme) => {
-        return (
-          <div>
-            <img className="meme-images" src={meme.link} />
-          </div>
-        );
-      })}
-    </div>
-  );
+  return (<div>
+	{meme.map((meme) => {
+		return(
+			<img src={m} />
+		)
+	})}
+  </div>)
 };
 export default Library;

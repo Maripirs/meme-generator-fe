@@ -1,0 +1,12 @@
+.meme-images{
+    width: 20em;
+    padding: 2em;
+}
+
+.library-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: black;
+}
+
