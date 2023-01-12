@@ -1,5 +1,5 @@
 import "./Creator.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ImageOptions from "../../Components/ImageOptions/ImageOptions";
 
@@ -109,6 +109,5 @@ const Creator = () => {
 			{textSubmited ? memeScreen : inputScreen}
 		</div>
 	);
-
 };
 export default Creator;
