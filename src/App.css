@@ -1,3 +1,14 @@
+.App {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
 header {
-	height: 100px;
+	height: 60px;
+	background-color: black;
+	color: white;
+}
+main {
+	flex-grow: 1;
 }

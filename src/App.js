@@ -9,11 +9,11 @@ function App() {
 		<div className="App">
 			<header className="App-header">
 				<div className="page-title">Meme Generator</div>
+				<nav>
+					<NavLink to="/"> Meme Creator</NavLink>
+					<NavLink to="/meme-library">Meme Library</NavLink>
+				</nav>
 			</header>
-			<nav>
-				<NavLink to="/"> Meme Creator</NavLink>
-				<NavLink to="/meme-library">Meme Library</NavLink>
-			</nav>
 			<main>
 				<Routes>
 					<Route path="/" element={<Creator />} />
