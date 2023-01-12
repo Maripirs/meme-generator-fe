@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import ImageOptions from "../../Components/ImageOptions/ImageOptions";
 
 const Creator = () => {
-	const [textSubmited, setTextSubmitted] = useState(true);
+	const [textSubmited, setTextSubmitted] = useState(false);
 	const [currentImage, setCurrentImage] = useState(null);
-	const [memeText, setMemeText] = useState("User Text");
+	const [memeText, setMemeText] = useState("");
 	const [creator, setCreator] = useState("Annonymous");
 
 	const submitText = (e) => {
@@ -16,7 +16,6 @@ const Creator = () => {
 	};
 
 	const handleMemeText = (e) => {
-		console.log(e.target.value);
 		setMemeText(e.target.value);
 	};
 	const handleCreatorText = (e) => {
@@ -43,6 +42,7 @@ const Creator = () => {
 			let newMeme = {
 				text: memeText,
 				creator: creator,
+				image: currentImage,
 			};
 			console.log(newMeme);
 		}
@@ -50,14 +50,15 @@ const Creator = () => {
 
 	const inputScreen = (
 		<>
-			<form onSubmit={submitText}>
+			<form className="welcome-form" onSubmit={submitText}>
 				<input
 					type="text"
 					placeholder="Enter Meme Text Here"
 					value={memeText}
+					className="memeText"
 					onChange={handleMemeText}
 				/>
-				<input type="submit" />
+				<input type="submit" className="submit-button" />
 			</form>
 		</>
 	);
@@ -68,27 +69,33 @@ const Creator = () => {
 				currentImage={currentImage}
 				setCurrentImage={setCurrentImage}
 			/>
-			<div
-				className="meme-result"
-				style={{ backgroundImage: `url(${currentImage})` }}
-			>
-				<input
-					type="text"
-					placeholder="Enter Meme Text Here"
-					value={memeText}
-					className="memeText"
-					onChange={handleMemeText}
-				/>
+			<div className="meme-result">
+				<div className="meme-image-container">
+					<img className="meme-image" src={currentImage} />
+				</div>
+				<div className="meme-text-container">
+					<textarea
+						type="text"
+						placeholder="Enter Meme Text Here"
+						value={memeText}
+						className="memeText"
+						onChange={handleMemeText}
+					/>
+				</div>
 			</div>
 			<form className="meme-form" onSubmit={submitMeme}>
-				<label>Created by</label>
+				<label className="form-label">Created by</label>
 				<input
 					type="text"
 					value={creator}
 					className="creatorName"
 					onChange={handleCreatorText}
 				/>
-				<input type="submit" onClick={submitMeme}></input>
+				<input
+					type="submit"
+					onClick={submitMeme}
+					className="submit-button"
+				></input>
 			</form>
 		</>
 	);

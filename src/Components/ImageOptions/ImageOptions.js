@@ -15,11 +15,13 @@ const ImageOptions = (props) => {
 			let randomInd = Math.floor(Math.random() * allImages.data.memes.length);
 			images.push(allImages.data.memes[randomInd].url);
 		}
+		if (!props.currentImage) {
+			props.setCurrentImage(images[0]);
+		}
 		setRandomImages(images);
 	};
 
 	const selectImage = (e) => {
-		console.log("e.target", e.target.closest("div").id);
 		props.setCurrentImage(e.target.closest("div").id);
 	};
 
@@ -30,7 +32,6 @@ const ImageOptions = (props) => {
 	useEffect(() => {
 		if (allImages) {
 			randomizeImages();
-			props.setCurrentImage(randomImages[0]);
 		}
 	}, [allImages]);
 
@@ -41,7 +42,7 @@ const ImageOptions = (props) => {
 					"option-container " +
 					(props.currentImage
 						? props.currentImage === image
-							? "active"
+							? "activeImg"
 							: ""
 						: "")
 				}
@@ -57,10 +58,13 @@ const ImageOptions = (props) => {
 	return (
 		<>
 			<div className="image-selector-container">
+				<h3>Select an image for your meme</h3>
 				<div className="images-container">
 					{randomImages.length > 0 ? selectedImages : "Loading..."}
 				</div>
-				<button onClick={randomizeImages}>Genetate New Images</button>
+				<button className="submit-button" onClick={randomizeImages}>
+					Genetate New Images
+				</button>
 			</div>
 		</>
 	);
