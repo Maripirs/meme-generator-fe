@@ -53,7 +53,7 @@ const Creator = () => {
 			let newMeme = {
 				userText: memeText,
 				userName: creator.length > 0 ? creator : "Annonymous",
-				stockMeme: currentImage.id,
+				stockMeme: currentImageId,
 			};
 			postMeme(newMeme);
 			navigate(`/meme-library`);
