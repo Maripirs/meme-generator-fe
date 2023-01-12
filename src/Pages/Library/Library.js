@@ -40,16 +40,15 @@ const Library = () => {
 
   const loaded = () => {
     return (
-      <div key={meme.id} className="cards-container">
+      <div className="cards-container">
         {meme.map((meme) => {
           return (
-            <div className="cards">
+            <div key={meme.id} className="cards">
               {/* <img src={meme.image} />
 				<h2>{meme.text}</h2> */}
               <div className="image-container">
                 <h3 className="meme-text">"Text here"</h3>
                 <img
-                  key={meme.id}
                   className="meme-image"
                   src={meme.image}
                   onClick={() => {
@@ -59,7 +58,7 @@ const Library = () => {
               </div>
               <Modal className="modal" show={show} onHide={handleClose}>
                 <h1 className="modal-text">Text Here</h1>
-                <img src={meme.image} key={meme.id} />
+                <img src={meme.image} />
               </Modal>
             </div>
           );
