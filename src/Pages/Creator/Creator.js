@@ -6,9 +6,18 @@ import ImageOptions from "../../Components/ImageOptions/ImageOptions";
 const Creator = () => {
 	const [textSubmited, setTextSubmitted] = useState(false);
 	const [currentImage, setCurrentImage] = useState(null);
+	const [currentImageId, setCurrentImageId] = useState(null);
 	const [memeText, setMemeText] = useState("");
 	const [creator, setCreator] = useState("");
 	const navigate = useNavigate();
+
+	const getImage = async () => {
+		const response = await fetch(
+			`https://meme-backend-hackathon.herokuapp.com/meme/${currentImageId}`
+		);
+		const image = await response.json();
+		setCurrentImage(image);
+	};
 
 	const submitText = (e) => {
 		e.preventDefault();
@@ -26,7 +35,7 @@ const Creator = () => {
 
 	const postMeme = async (memeData) => {
 		try {
-			await fetch(`URL GOES HERE`, {
+			await fetch(`https://meme-backend-hackathon.herokuapp.com/usermeme`, {
 				method: "post",
 				headers: {
 					"Content-Type": "application/json",
@@ -42,14 +51,20 @@ const Creator = () => {
 		e.preventDefault();
 		if (memeText.length > 0) {
 			let newMeme = {
-				text: memeText,
-				creator: creator.length > 0 ? creator : "Annonymous",
+				userText: memeText,
+				userName: creator.length > 0 ? creator : "Annonymous",
 				image: currentImage,
 			};
-			console.log(newMeme);
+			postMeme(newMeme);
 			navigate(`/meme-library`);
 		}
 	};
+
+	useEffect(() => {
+		if (currentImageId) {
+			getImage();
+		}
+	}, [currentImageId]);
 
 	const inputScreen = (
 		<>
@@ -69,12 +84,15 @@ const Creator = () => {
 	const memeScreen = (
 		<>
 			<ImageOptions
-				currentImage={currentImage}
-				setCurrentImage={setCurrentImage}
+				currentImageId={currentImageId}
+				setCurrentImageId={setCurrentImageId}
 			/>
 			<div className="meme-result">
 				<div className="meme-image-container">
-					<img className="meme-image-create" src={currentImage} />
+					<img
+						className="meme-image-create"
+						src={currentImage ? currentImage.img : ""}
+					/>
 				</div>
 				<div className="meme-text-container">
 					<textarea
