@@ -1,12 +1,14 @@
 import "./Creator.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ImageOptions from "../../Components/ImageOptions/ImageOptions";
 
 const Creator = () => {
 	const [textSubmited, setTextSubmitted] = useState(false);
 	const [currentImage, setCurrentImage] = useState(null);
 	const [memeText, setMemeText] = useState("");
-	const [creator, setCreator] = useState("Annonymous");
+	const [creator, setCreator] = useState("");
+	const navigate = useNavigate();
 
 	const submitText = (e) => {
 		e.preventDefault();
@@ -41,10 +43,11 @@ const Creator = () => {
 		if (memeText.length > 0) {
 			let newMeme = {
 				text: memeText,
-				creator: creator,
+				creator: creator.length > 0 ? creator : "Annonymous",
 				image: currentImage,
 			};
 			console.log(newMeme);
+			navigate(`/meme-library`);
 		}
 	};
 
@@ -71,7 +74,7 @@ const Creator = () => {
 			/>
 			<div className="meme-result">
 				<div className="meme-image-container">
-					<img className="meme-image" src={currentImage} />
+					<img className="meme-image-create" src={currentImage} />
 				</div>
 				<div className="meme-text-container">
 					<textarea
@@ -87,6 +90,7 @@ const Creator = () => {
 				<label className="form-label">Created by</label>
 				<input
 					type="text"
+					placeholder="Annonymous"
 					value={creator}
 					className="creatorName"
 					onChange={handleCreatorText}
