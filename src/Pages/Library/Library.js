@@ -3,6 +3,12 @@ import "./Library.css";
 
 const Library = () => {
   const [meme, setMeme] = useState([]);
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+  };
 
   const getMeme = () => {
     const options = {
