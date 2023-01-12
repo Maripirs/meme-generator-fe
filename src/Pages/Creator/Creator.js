@@ -105,5 +105,6 @@ const Creator = () => {
 			{textSubmited ? memeScreen : inputScreen}
 		</div>
 	);
+
 };
 export default Creator;

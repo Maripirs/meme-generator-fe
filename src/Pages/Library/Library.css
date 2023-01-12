@@ -1,0 +1,36 @@
+.title {
+  display: flex;
+  justify-content: center;
+  color: pink;
+}
+
+.meme-text {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: white;
+}
+
+.meme-image {
+  border-radius: 1em;
+  width: 25em;
+  height: 25em;
+  object-fit: cover;
+}
+
+.library-container {
+  background-color: black;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cards {
+  margin: 1em;
+}
