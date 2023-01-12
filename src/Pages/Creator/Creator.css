@@ -43,7 +43,7 @@
 	display: flex;
 	justify-content: center;
 }
-.meme-image {
+.meme-image-create {
 	object-fit: cover;
 }
 .meme-text-container {
