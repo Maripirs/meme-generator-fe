@@ -1,17 +1,24 @@
 import "./App.css";
 import { Routes, Route, NavLink } from "react-router-dom";
 
-import Library from "./Pages/Library";
-import Creator from "./Pages/Creator";
+import Library from "./Pages/Library/Library";
+import Creator from "./Pages/Creator/Creator";
 
 function App() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<div className="page-title">Meme Generator</div>
+				<div className="page-title">
+					<h1>Meme Generator</h1>
+				</div>
 				<nav>
-					<NavLink to="/"> Meme Creator</NavLink>
-					<NavLink to="/meme-library">Meme Library</NavLink>
+					<NavLink className="navlinks" to="/">
+						{" "}
+						Meme Creator
+					</NavLink>
+					<NavLink className="navlinks" to="/meme-library">
+						Meme Library
+					</NavLink>
 				</nav>
 			</header>
 			<main>
