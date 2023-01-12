@@ -1,5 +1,5 @@
 import "./Creator.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ImageOptions from "../../Components/ImageOptions/ImageOptions";
 
@@ -53,7 +53,7 @@ const Creator = () => {
 			let newMeme = {
 				userText: memeText,
 				userName: creator.length > 0 ? creator : "Annonymous",
-				image: currentImage,
+				stockMeme: currentImage.id,
 			};
 			postMeme(newMeme);
 			navigate(`/meme-library`);
