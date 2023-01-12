@@ -5,24 +5,26 @@ const ImageOptions = (props) => {
 	const [allImages, setAllImages] = useState(null);
 
 	const getImages = async () => {
-		const response = await fetch("https://api.imgflip.com/get_memes");
+		const response = await fetch(
+			"https://meme-backend-hackathon.herokuapp.com/meme"
+		);
 		const memes = await response.json();
 		setAllImages(memes);
 	};
 	const randomizeImages = () => {
 		let images = [];
 		for (let i = 0; i < 4; i++) {
-			let randomInd = Math.floor(Math.random() * allImages.data.memes.length);
-			images.push(allImages.data.memes[randomInd].url);
+			let randomInd = Math.floor(Math.random() * allImages.length);
+			images.push(allImages[randomInd]);
 		}
 		if (!props.currentImage) {
-			props.setCurrentImage(images[0]);
+			props.setCurrentImageId(images[0].id);
 		}
 		setRandomImages(images);
 	};
 
 	const selectImage = (e) => {
-		props.setCurrentImage(e.target.closest("div").id);
+		props.setCurrentImageId(e.target.closest("div").id);
 	};
 
 	useEffect(() => {
@@ -40,17 +42,17 @@ const ImageOptions = (props) => {
 			<div
 				className={
 					"option-container " +
-					(props.currentImage
-						? props.currentImage === image
+					(props.currentImageId
+						? props.currentImageId === image._id
 							? "activeImg"
 							: ""
 						: "")
 				}
 				key={i}
 				onClick={selectImage}
-				id={image}
+				id={image._id}
 			>
-				<img className="option-image " src={image} />
+				<img className="option-image " src={image.img} />
 			</div>
 		);
 	});
