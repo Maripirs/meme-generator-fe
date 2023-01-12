@@ -1,0 +1,38 @@
+.creator-container {
+	display: flex;
+	height: 100%;
+	width: 100vw;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	overflow: hidden;
+	overscroll-behavior: none;
+}
+
+.meme-result {
+	width: 100%;
+	flex-grow: 1;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+input.memeText {
+	border: none;
+	background-color: transparent;
+	margin: 50px;
+	color: white;
+	font-size: 30px;
+	text-shadow: -2px 2px 0 black, 2px 2px 0 black, 2px -2px 0 black,
+		-2px -2px 0 black !important;
+	text-align: center;
+}
+
+input.memeText:focus {
+	outline: none;
+}
