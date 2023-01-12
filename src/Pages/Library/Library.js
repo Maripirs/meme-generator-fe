@@ -1,47 +1,38 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import "./Library.css";
 
 const Library = () => {
   const [meme, setMeme] = useState([]);
-  const [show, setShow] = useState(false);
 
-  const handleShow = () => setShow(true);
-  const handleClose = () => {
-    setShow(false);
-  };
-
-  const getMeme = () => {
-    const options = {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "0057af3370msh1b587aa13941ffcp17913cjsne632f12d93d4",
-        "X-RapidAPI-Host": "programming-memes-reddit.p.rapidapi.com",
-      },
-    };
-
-    fetch("https://programming-memes-reddit.p.rapidapi.com/", options)
-      .then((response) => response.json())
-      .then((response) => {
-        console.log("response JSON", response);
-        setMeme(response);
-      })
-      .catch((err) => console.error(err));
+  const getMeme = async () => {
+    try {
+      const response = await fetch(`our backend URL here`);
+      const allMemes = await response.json();
+      setMeme(allMemes);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     getMeme();
   }, []);
 
-  return (
-    <div className="library-container">
-      {meme.map((meme) => {
-        return (
-          <div>
-            <img className="meme-images" src={meme.link} />
-          </div>
-        );
-      })}
-    </div>
-  );
+  const loaded = () => {
+    return (
+      <div>
+        <h1>Created Memes</h1>
+        {/* <img src={meme.image} /> */}
+        {/* <h2>{meme.text}</h2> */}
+      </div>
+    );
+  };
+
+  const loading = () => {
+    return <div>The memes are loading.</div>;
+  };
+
+  return <div>{meme ? loaded() : loading()}</div>;
 };
 export default Library;
