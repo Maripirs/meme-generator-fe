@@ -11,6 +11,7 @@ header {
 	align-items: center;
 	justify-content: center;
 	height: 120px;
+	min-height: 120px;
 	background-color: #0e0d17;
 	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.911);
 	color: white;
@@ -36,4 +37,8 @@ nav {
 }
 .active {
 	background-color: #8c2eff;
+}
+.navlinks:hover {
+	color: white;
+	background-color: #331557;
 }
