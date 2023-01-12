@@ -8,7 +8,7 @@ const Library = () => {
   const getMeme = async () => {
     try {
       const response =
-        await fetch(`https://meme-backend-hackathon.herokuapp.com/meme
+        await fetch(`https://meme-backend-hackathon.herokuapp.com/usermeme
 	  `);
       const allMemes = await response.json();
       setMeme(allMemes);
@@ -28,7 +28,7 @@ const Library = () => {
           return (
             <div key={meme._id} className="cards">
               <div className="image-container">
-                <h3 className="meme-text">"Text here"</h3>
+                <h3 className="meme-text">{meme.userText}</h3>
                 <img className="meme-image" src={meme.img} />
               </div>
             </div>
